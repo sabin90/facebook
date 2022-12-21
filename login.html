@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 0 10px;
+    }
+
+    button {
+      width: 100%;
+      height: 35px;
+      background-color: #0077c9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Login</h1>
+    <form>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password">
+      </div>
+      <button type="button" onclick="login()">Login</button>
+      <div class="error" id="error"></div>
+    </form>
+  </div>
+
+  <script>
+    function login() {
+      // Get the entered username and password
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Get the stored username and password
+      var storedUsername = sessionStorage.getItem('username');
+      var storedPassword = sessionStorage.getItem('password');
+
+      // Check if the entered username and password match the stored credentials
+      if (username == storedUsername && password == storedPassword) {
+        // If the credentials match, open Facebook
+        window.location.href = "https://www.facebook.com";
+      } else {
+        // If the credentials don't match, display an error message
+        document.getElementById('error').innerHTML = "Invalid username or password";
+      }
+    }
+  </script>
+</body>
+</html>
